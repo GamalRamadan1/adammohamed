@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>الذكاء الاصطناعي | المميزات والعيوب</title>
+
+    <style>
+        /* الإعدادات العامة */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background: #080d1c;
+            color: #ffffff;
+            line-height: 1.9;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* الخلفية المتحركة */
+        body::before {
+            content: "";
+            position: fixed;
+            top: -100px;
+            right: -100px;
+            width: 350px;
+            height: 350px;
+            background: #00d9ff;
+            filter: blur(150px);
+            opacity: 0.17;
+            border-radius: 50%;
+            z-index: -1;
+            animation: moveLight 8s infinite alternate;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            bottom: -100px;
+            left: -100px;
+            width: 350px;
+            height: 350px;
+            background: #8b5cf6;
+            filter: blur(150px);
+            opacity: 0.2;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        @keyframes moveLight {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(-100px, 100px);
+            }
+        }
+
+        /* شريط التنقل */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(8, 13, 28, 0.9);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        nav {
+            min-height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            color: #00d9ff;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #d4d9e8;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: #00d9ff;
+        }
+
+        /* القسم الرئيسي */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .badge {
+            display: inline-block;
+            color: #00d9ff;
+            border: 1px solid rgba(0, 217, 255, 0.35);
+            background: rgba(0, 217, 255, 0.08);
+            padding: 7px 20px;
+            border-radius: 30px;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 6vw, 65px);
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #00d9ff, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            color: #b5bfd6;
+            font-size: 17px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #00bfe8, #6366f1);
+            color: white;
+        }
+
+        .btn-outline {
+            border: 1px solid #3b4965;
+            color: #ffffff;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 217, 255, 0.15);
+        }
+
+        /* الأقسام العامة */
+        section {
+            padding: 80px 0;
+            scroll-margin-top: 90px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(27px, 4vw, 40px);
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #aab5cc;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* بطاقات المعلومات */
+        .about-box {
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+            max-width: 900px;
+            margin: auto;
+            transition: 0.3s;
+        }
+
+        .about-box:hover {
+            border-color: #00d9ff;
+            transform: translateY(-5px);
+        }
+
+        .about-box p {
+            color: #c0c9dc;
+            font-size: 16px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 18px;
+            padding: 28px 23px;
+            transition: 0.35s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #00d9ff;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .icon {
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 217, 255, 0.1);
+            border-radius: 14px;
+            font-size: 27px;
+            margin-bottom: 18px;
+        }
+
+        .card h3 {
+            font-size: 19px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #aeb9d0;
+            font-size: 14px;
+        }
+
+        /* قسم المميزات */
+        .advantages .section-title h2 {
+            color: #4ade80;
+        }
+
+        .advantages .card:hover {
+            border-color: #4ade80;
+        }
+
+        .advantages .icon {
+            background: rgba(74, 222, 128, 0.1);
+        }
+
+        /* قسم العيوب */
+        .disadvantages .section-title h2 {
+            color: #fb7185;
+        }
+
+        .disadvantages .card:hover {
+            border-color: #fb7185;
+        }
+
+        .disadvantages .icon {
+            background: rgba(251, 113, 133, 0.1);
+        }
+
+        /* الاستخدامات */
+        .uses .card {
+            text-align: center;
+        }
+
+        .uses .icon {
+            margin: 0 auto 18px;
+        }
+
+        /* نصيحة */
+        .tip-box {
+            max-width: 900px;
+            margin: auto;
+            padding: 35px;
+            text-align: center;
+            border-radius: 20px;
+            background: linear-gradient(
+                135deg,
+                rgba(0, 217, 255, 0.1),
+                rgba(139, 92, 246, 0.12)
+            );
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .tip-box h2 {
+            margin-bottom: 15px;
+            color: #00d9ff;
+        }
+
+        .tip-box p {
+            color: #c2cbe0;
+        }
+
+        /* المصادر */
+        .sources {
+            text-align: center;
+        }
+
+        .sources a {
+            display: inline-block;
+            margin: 8px;
+            padding: 10px 17px;
+            border: 1px solid #34415d;
+            border-radius: 9px;
+            color: #00d9ff;
+            transition: 0.3s;
+        }
+
+        .sources a:hover {
+            background: rgba(0, 217, 255, 0.1);
+            border-color: #00d9ff;
+        }
+
+        /* الفوتر */
+        footer {
+            padding: 30px 0;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.025);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        footer p {
+            color: #9ba8c1;
+            font-size: 14px;
+        }
+
+        footer span {
+            color: #00d9ff;
+        }
+
+        /* زر العودة للأعلى */
+        #topButton {
+            position: fixed;
+            bottom: 22px;
+            left: 22px;
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 12px;
+            background: #00bfe8;
+            color: #07111f;
+            font-size: 22px;
+            cursor: pointer;
+            display: none;
+            z-index: 100;
+        }
+
+        /* التوافق مع الموبايل */
+        @media (max-width: 900px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+
+            .nav-links {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px 17px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .hero {
+                min-height: 75vh;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            section {
+                padding: 55px 0;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            .about-box,
+            .tip-box {
+                padding: 25px 20px;
+            }
+        }
+
+        /* تأثير الظهور */
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* احترام إعداد تقليل الحركة */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation: none !important;
+                transition: none !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- شريط التنقل -->
+    <header>
+        <nav class="container">
+            <a href="#home" class="logo">AI المستقبل 🤖</a>
+
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#about">التعريف</a></li>
+                <li><a href="#advantages">المميزات</a></li>
+                <li><a href="#disadvantages">العيوب</a></li>
+                <li><a href="#uses">الاستخدامات</a></li>
+                <li><a href="#sources">المصادر</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- القسم الرئيسي -->
+    <main>
+        <section class="hero" id="home">
+            <div class="container hero-content">
+                <span class="badge">🚀 اكتشف تكنولوجيا المستقبل</span>
+
+                <h1>
+                    الذكاء الاصطناعي
+                    <br>
+                    <span class="gradient-text">
+                        المميزات والعيوب
+                    </span>
+                </h1>
+
+                <p>
+                    رحلة لاكتشاف عالم الذكاء الاصطناعي، وكيف يغيّر حياتنا،
+                    وما يقدمه من فرص وتحديات في عصر التكنولوجيا الحديثة.
+                </p>
+
+                <div class="buttons">
+                    <a href="#advantages" class="btn btn-primary">
+                        اكتشف المميزات ✨
+                    </a>
+
+                    <a href="#disadvantages" class="btn btn-outline">
+                        تعرّف على العيوب
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- التعريف -->
+        <section id="about">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h2>ما هو <span class="gradient-text">الذكاء الاصطناعي؟</span></h2>
+                    <p>تعريف بسيط للتكنولوجيا التي تغيّر عالمنا.</p>
+                </div>
+
+                <div class="about-box reveal">
+                    <p>
+                        الذكاء الاصطناعي (Artificial Intelligence - AI)
+                        هو مجال من مجالات علوم الكمبيوتر يهدف إلى تطوير أنظمة
+                        تستطيع تنفيذ مهام تحتاج عادةً إلى قدرات بشرية، مثل
+                        التعلّم، وفهم اللغة، وتحليل المعلومات، والتعرّف على الصور،
+                        وحل المشكلات. ويُستخدم اليوم في التعليم والطب والصناعة
+                        والتجارة والعديد من المجالات الأخرى.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- المميزات -->
+        <section class="advantages" id="advantages">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h2>✅ مميزات الذكاء الاصطناعي</h2>
+                    <p>
+                        أهم الفوائد التي يقدمها الذكاء الاصطناعي للأفراد والمجتمع.
+                    </p>
+                </div>
+
+                <div class="cards">
+
+                    <article class="card reveal">
+                        <div class="icon">⚡</div>
+                        <h3>السرعة والإنجاز</h3>
+                        <p>
+                            يستطيع إنجاز العديد من المهام بسرعة، مما يساعد
+                            على توفير الوقت والجهد.
+                        </p>
+                    </article>
+
+                    <article class="card reveal">
+                        <div class="icon">📚</div>
+                        <h3>تطوير التعليم</h3>
+                        <p>
+                            يساعد الطلاب على فهم الدروس، وتبسيط المعلومات،
+                            والتدرّب على حل المسائل.
+                        </p>
+                    </article>
+
+                    <article class="card reveal">
+                        <div class="icon">🏥</div>
+                        <h3>المساعدة في الطب</h3>
+                        <p>
+                            يساهم في تحليل البيانات الطبية ومساعدة المتخصصين
+                            في اكتشاف بعض الأنماط المرضية.
+                        </p>
+                    </article>
+
+                    <article class="card reveal">
+                        <div class="icon">📊</div>
+                        <h3>تحليل البيانات</h3>
+                        <p>
+                            يستطيع معالجة كميات كبيرة من البيانات واكتشاف
+                            الأنماط التي يصعب ملاحظتها يدويًا.
+                        </p>
+                    </article>
+
+                    <article class="card reveal">
+                        <div class="icon">🎨</div>
+                        <h3>دعم الإبداع</h3>
+                        <p>
+                            يساعد في ابتكار الأفكار وتصميم الصور وكتابة
+                            النصوص وإنتاج محتوى جديد.
+                        </p>
+                    </article>
+
+                    <article class="card reveal">
+                        <div class="icon">🔄</div>
+                        <h3>أتمتة المهام</h3>
+                        <p>
+                            يمكنه تنفيذ بعض الأعمال المتكررة، مما يسمح
+                            للإنسان بالتركيز على مهام أخرى.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- العيوب -->
+        <section class="disadvantages" id="disadvantages">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h2>❌ عيوب الذكاء الاصطناعي</h2>
+                    <p>
+                        رغم فوائده، توجد تحديات يجب فهمها والتعامل معها بحذر.
+                    </p>
+                </div>
+
+                <div class="cards">
+
+                    <article class="card reveal">
+                        <div class="icon">⚠️</div>
+                        <h3>المعلومات غير الدقيقة</h3>
+                        <p>
+                            قد يقدم إجابات خاطئة أو معلومات غير دقيقة،
+                            لذلك يجب مراجعة المعلومات المهمة.
+                        </p>
+                    </article>
+
+                    <article class="card reveal">
+                        <div class="icon">🔒</div>
+                        <h3>مخاطر الخصوصية</h3>
+                        <p>
+                            قد تتعرض البيانات الشخصية للخطر إذا جُمعت
+                            أو استُخدمت دون حماية مناسبة.
+                        </p>
+                    </article>
+
+                    <article class="card reveal">
+                        <div class="icon">💼</div>
+                        <h3>التأثير على الوظائف</h3>
+                        <p>
+                            قد تتغير بعض الوظائف بسبب الأتمتة،
+                            مما يزيد الحاجة إلى تعلّم مهارات جديدة.
+                        </p>
+                    </article>
+
+                    <article class="card reveal">
+                        <div class="icon">🧠</div>
+                        <h3>الاعتماد الزائد</h3>
+                        <p>
+                            الاعتماد عليه في كل شيء قد يقلل فرص ممارسة
+                            التفكير المستقل وحل المشكلات.
+                        </p>
+                    </article>
+
+                    <article class="card reveal">
+                        <div class="icon">⚖️</div>
+                        <h3>التحيز وعدم العدالة</h3>
+                        <p>
+                            قد ينتج نتائج متحيزة إذا كانت بيانات التدريب
+                            لا تمثل الأشخاص بصورة عادلة.
+                        </p>
+                    </article>
+
+                    <article class="card reveal">
+                        <div class="icon">💰</div>
+                        <h3>تكاليف التشغيل</h3>
+                        <p>
+                            قد تحتاج الأنظمة المتقدمة إلى أجهزة قوية
+                            وطاقة وموارد مالية كبيرة.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- الاستخدامات -->
+        <section class="uses" id="uses">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h2>🌍 استخدامات الذكاء الاصطناعي</h2>
+                    <p>
+                        أمثلة على المجالات التي أصبح الذكاء الاصطناعي
+                        جزءًا مهمًا منها.
+                    </p>
+                </div>
+
+                <div class="cards">
+
+                    <article class="card reveal">
+                        <div class="icon">🎓</div>
+                        <h3>التعليم</h3>
+                        <p>
+                            شرح الدروس، وتقديم تدريبات تعليمية،
+                            والمساعدة في تعلّم اللغات.
+                        </p>
+                    </article>
+
+                    <article class="card reveal">
+                        <div class="icon">🚗</div>
+                        <h3>النقل والمواصلات</h3>
+                        <p>
+                            تحليل حركة المرور، وتحسين المسارات،
+                            ودعم أنظمة مساعدة السائق.
+                        </p>
+                    </article>
+
+                    <article class="card reveal">
+                        <div class="icon">🏭</div>
+                        <h3>الصناعة</h3>
+                        <p>
+                            مراقبة جودة المنتجات، والتنبؤ ببعض الأعطال،
+                            وتحسين عمليات الإنتاج.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- الاستخدام المسؤول -->
+        <section id="advice">
+            <div class="container">
+                <div class="tip-box reveal">
+                    <h2>💡 كيف نستخدم الذكاء الاصطناعي بمسؤولية؟</h2>
+
+                    <p>
+                        تحقّق من المعلومات قبل الاعتماد عليها، ولا تشارك
+                        بياناتك الشخصية الحساسة، واستخدم الذكاء الاصطناعي
+                        لمساعدتك على التعلّم بدلًا من أن يحلّ محل تفكيرك.
+                        وتذكّر أن القرارات المهمة تحتاج إلى مراجعة بشرية
+                        وخبرة مناسبة.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- المصادر -->
+        <section class="sources" id="sources">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h2>📚 مصادر ومراجع</h2>
+                    <p>
+                        يمكنك الرجوع إلى المصادر التالية للتوسع في الموضوع.
+                    </p>
+                </div>
+
+                <div class="reveal">
+                    <a href="https://www.ibm.com/think/topics/artificial-intelligence"
+                       target="_blank" rel="noopener noreferrer">
+                        IBM - الذكاء الاصطناعي
+                    </a>
+
+                    <a href="https://www.unesco.org/en/artificial-intelligence"
+                       target="_blank" rel="noopener noreferrer">
+                        UNESCO - الذكاء الاصطناعي
+                    </a>
+
+                    <a href="https://www.consilium.europa.eu/en/policies/artificial-intelligence/"
+                       target="_blank" rel="noopener noreferrer">
+                        مجلس الاتحاد الأوروبي - الذكاء الاصطناعي
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- تذييل الموقع -->
+    <footer>
+        <div class="container">
+            <p>
+                © 2026 جميع الحقوق محفوظة |
+                <span>AI المستقبل 🤖</span>
+            </p>
+
+            <p>
+                موقع تعليمي للتعريف بالذكاء الاصطناعي ومميزاته وعيوبه.
+            </p>
+        </div>
+    </footer>
+
+    <!-- زر العودة للأعلى -->
+    <button id="topButton" aria-label="العودة إلى أعلى الصفحة">
+        ↑
+    </button>
+
+    <script>
+        // إظهار العناصر عند الوصول إليها
+        const revealElements = document.querySelectorAll(".reveal");
+
+        if ("IntersectionObserver" in window) {
+            const observer = new IntersectionObserver(
+                function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("show");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+            revealElements.forEach(function(element) {
+                observer.observe(element);
+            });
+        } else {
+            revealElements.forEach(function(element) {
+                element.classList.add("show");
+            });
+        }
+
+        // زر العودة إلى أعلى الصفحة
+        const topButton = document.getElementById("topButton");
+
+        window.addEventListener("scroll", function() {
+            if (window.scrollY > 300) {
+                topButton.style.display = "block";
+            } else {
+                topButton.style.display = "none";
+            }
+        });
+
+        topButton.addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
+
+</body>
+</html>
