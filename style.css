@@ -343,3 +343,38 @@ section {
         font-size: 13px;
     }
 }
+/* Student Footer */
+.student-footer {
+    background-color: rgb(32, 32, 32);
+    color: white;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-line {
+    width: 65px;
+    height: 4px;
+    background-color: #0d6efd;
+    border-radius: 10px;
+}
+
+.student-footer h4 {
+    color: white;
+}
+
+.footer-label {
+    color: #0d6efd;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.footer-value {
+    color: #d1d1d1;
+    margin-bottom: 0;
+    font-size: 15px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #999;
+    font-size: 13px;
+}
